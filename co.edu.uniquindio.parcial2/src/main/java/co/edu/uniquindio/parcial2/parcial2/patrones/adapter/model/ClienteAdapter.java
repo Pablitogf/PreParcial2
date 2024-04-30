@@ -2,10 +2,10 @@ package co.edu.uniquindio.parcial2.parcial2.patrones.adapter.model;
 
 import co.edu.uniquindio.parcial2.parcial2.patrones.adapter.services.ISistemaDePagoHeredado;
 
-class Cliente {
+public class ClienteAdapter {
     private ISistemaDePagoHeredado IsistemaDePagoHeredado;
 
-    public Cliente(ISistemaDePagoHeredado sistemaDePagoHeredado) {
+    public ClienteAdapter(ISistemaDePagoHeredado sistemaDePagoHeredado) {
         this.IsistemaDePagoHeredado = sistemaDePagoHeredado;
     }
 
