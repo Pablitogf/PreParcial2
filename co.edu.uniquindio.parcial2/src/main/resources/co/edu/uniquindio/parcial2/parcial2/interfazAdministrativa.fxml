@@ -10,8 +10,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="672.0" prefWidth="1007.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.parcial2.parcial2.Controller.InterfazAdministrativaController">
+<AnchorPane prefHeight="672.0" prefWidth="1007.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.parcial2.parcial2.controller.ObjetoController">
    <children>
       <TabPane prefHeight="672.0" prefWidth="1007.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -19,10 +18,10 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="84.0" layoutY="71.0" mnemonicParsing="false" text="Accion 1" />
-                        <Button layoutX="698.0" layoutY="71.0" mnemonicParsing="false" text="Accion 3" />
-                        <Button layoutX="698.0" layoutY="117.0" mnemonicParsing="false" text="Accion 4" />
-                        <Button layoutX="84.0" layoutY="117.0" mnemonicParsing="false" text="Accion 2" />
+                        <Button fx:id="btnAccion1" layoutX="84.0" layoutY="71.0" mnemonicParsing="false" onAction="#onAccion1" text="Accion 1" />
+                        <Button fx:id="btnAccion3" layoutX="698.0" layoutY="71.0" mnemonicParsing="false" onAction="#onAccion3" text="Accion 3" />
+                        <Button fx:id="btnAccion4" layoutX="698.0" layoutY="117.0" mnemonicParsing="false" onAction="#onAccion4" text="Accion 4" />
+                        <Button fx:id="btnAccion2" layoutX="84.0" layoutY="117.0" mnemonicParsing="false" onAction="#onAccion2" text="Accion 2" />
                         <TableView layoutX="14.0" layoutY="180.0" prefHeight="444.0" prefWidth="980.0">
                           <columns>
                             <TableColumn prefWidth="75.0" text="C1" />
@@ -31,10 +30,10 @@
                         </TableView>
                         <Separator layoutX="18.0" layoutY="157.0" prefHeight="0.0" prefWidth="972.0" />
                         <Label layoutX="437.0" layoutY="40.0" text="Acciones Administrativas:" />
-                        <TextField layoutX="177.0" layoutY="71.0" />
-                        <TextField layoutX="177.0" layoutY="117.0" />
-                        <TextField layoutX="791.0" layoutY="71.0" />
-                        <TextField layoutX="791.0" layoutY="117.0" />
+                        <TextField fx:id="txtAccion1" layoutX="177.0" layoutY="71.0" />
+                        <TextField fx:id="txtAccion2" layoutX="177.0" layoutY="117.0" />
+                        <TextField fx:id="txtAccion3" layoutX="791.0" layoutY="71.0" />
+                        <TextField fx:id="txtAccion4" layoutX="791.0" layoutY="117.0" />
                      </children>
                   </AnchorPane>
             </content>
