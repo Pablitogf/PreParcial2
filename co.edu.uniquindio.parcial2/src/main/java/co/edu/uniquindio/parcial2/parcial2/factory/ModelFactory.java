@@ -105,6 +105,11 @@ public class ModelFactory {
                 .clienteAsociado(cliente3)
                 .empleadoAsociado(empleado3)
                 .build();
+        Objeto objeto3 = Objeto.builder()
+                .nombreObjeto("compu")
+                .codigoObjeto("222")
+                .build();
+        prestamoUQ.getListaObjetos().add(objeto3);
         prestamo3.getListaObjetos().add(objeto1);
         prestamo3.getListaObjetos().add(objeto2);
         prestamoUQ.getListaPrestamo().add(prestamo3);

@@ -68,6 +68,7 @@ public class ObjetoViewController {
     private void initDataBinding() {
         colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombreObjeto()));
         colCodigo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCodigoObjeto()));
+        colDisponibilidad.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPrestamoAsociado() == null ? "Disponible" : "No Disponible"));
     }
 
     @FXML
@@ -96,9 +97,12 @@ public class ObjetoViewController {
 
     @FXML
     private TableColumn<Objeto, String> colCodigo;
+    @FXML
+    private TableColumn<Objeto, String> colDisponibilidad;
 
     @FXML
     private TextField txtSearchC;
+
 
 
 }
