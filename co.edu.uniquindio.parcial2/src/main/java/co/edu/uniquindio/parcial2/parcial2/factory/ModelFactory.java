@@ -48,6 +48,7 @@ public class ModelFactory {
         Objeto objeto1 = Objeto.builder()
                 .nombreObjeto("play")
                 .prestamoAsociado(prestamo1)
+                .codigoObjeto("111")
                 .build();
         prestamo1.getListaObjetos().add(objeto1);
         prestamoUQ.getListaPrestamo().add(prestamo1);
@@ -77,6 +78,7 @@ public class ModelFactory {
         Objeto objeto2 = Objeto.builder()
                 .nombreObjeto("control")
                 .prestamoAsociado(prestamo2)
+                .codigoObjeto("222")
                 .build();
         prestamo2.getListaObjetos().add(objeto2);
         prestamoUQ.getListaPrestamo().add(prestamo2);
@@ -157,6 +159,14 @@ public class ModelFactory {
 
     public List<Objeto> listaObjetos(int rango){
         return prestamoUQ.objetosPrestadosMayor(rango);
+    }
+
+    public List<Cliente> obtenerCliente(){
+        return prestamoUQ.getListaClientes();
+    }
+
+    public List<Cliente> listaClientes(int rango){
+        return prestamoUQ.clientesPrestamos(rango);
     }
 
 }

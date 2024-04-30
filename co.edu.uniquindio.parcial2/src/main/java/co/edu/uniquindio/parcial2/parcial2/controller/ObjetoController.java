@@ -18,6 +18,6 @@ public class ObjetoController {
     }
 
     public List<Objeto> obtenerObjetosRango(int rango){
-        return modelFactory.listaObjetos(0);
+        return modelFactory.listaObjetos(rango);
     }
 }

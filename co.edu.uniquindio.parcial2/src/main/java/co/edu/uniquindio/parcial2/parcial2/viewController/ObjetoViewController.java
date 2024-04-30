@@ -39,6 +39,7 @@ public class ObjetoViewController {
         tbObjeto.setItems(listaObjetos);
 //        listenerSelection();
     }
+
     private void initSearch(){
         FilteredList<Objeto> filteredData = new FilteredList<>(listaObjetos, b->true);
         txtSearchC.textProperty().addListener((ObservableList,oldValue,newValue)->{

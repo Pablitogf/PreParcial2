@@ -1,6 +1,7 @@
 package co.edu.uniquindio.parcial2.parcial2.model;
 
 import co.edu.uniquindio.parcial2.parcial2.builders.PrestamoUQBuilder;
+import co.edu.uniquindio.parcial2.parcial2.controller.ClienteController;
 import co.edu.uniquindio.parcial2.parcial2.factory.ModelFactory;
 
 import java.util.ArrayList;
@@ -94,5 +95,22 @@ public class PrestamoUQ {
 
     public List<Objeto> obtenerObjetos() {
         return modelFactory.obtenerObjetos();
+    }
+
+    public List<Cliente> clientesPrestamos(int rango){
+        List<Cliente> listaClientesPrestamos = new ArrayList<>();
+
+        for(Cliente cliente: listaClientes){
+            int contadorClientesPrestamos = 0;
+            for (Prestamo prestamo: listaPrestamo){
+                if (cliente.equals(prestamo.getClienteAsociado())){
+                    contadorClientesPrestamos++;
+                }
+            }
+            if (contadorClientesPrestamos > rango){
+                listaClientesPrestamos.add(cliente);
+            }
+        }
+        return listaClientesPrestamos;
     }
 }
