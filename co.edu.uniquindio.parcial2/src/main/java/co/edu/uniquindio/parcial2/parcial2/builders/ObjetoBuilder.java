@@ -6,7 +6,8 @@ import co.edu.uniquindio.parcial2.parcial2.model.Prestamo;
 public class ObjetoBuilder {
 
     protected String nombreObjeto;
-    private Prestamo prestamoAsociado;
+    protected Prestamo prestamoAsociado;
+    protected String codigoObjeto;
 
     public ObjetoBuilder nombreObjeto(String nombreObjeto) {
         this.nombreObjeto = nombreObjeto;
@@ -18,7 +19,12 @@ public class ObjetoBuilder {
         return this;
     }
 
+    public ObjetoBuilder codigoObjeto(String codigoObjeto) {
+        this.codigoObjeto = codigoObjeto;
+        return this;
+    }
+
     public Objeto build() {
-        return new Objeto(nombreObjeto, prestamoAsociado);
+        return new Objeto(nombreObjeto, prestamoAsociado, codigoObjeto);
     }
 }

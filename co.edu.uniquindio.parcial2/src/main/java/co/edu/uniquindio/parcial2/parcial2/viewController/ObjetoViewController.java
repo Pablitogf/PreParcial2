@@ -1,62 +1,104 @@
 package co.edu.uniquindio.parcial2.parcial2.viewController;
 
+import co.edu.uniquindio.parcial2.parcial2.controller.ObjetoController;
 import co.edu.uniquindio.parcial2.parcial2.model.Objeto;
+import co.edu.uniquindio.parcial2.parcial2.controller.ObjetoController;
+import co.edu.uniquindio.parcial2.parcial2.model.Objeto;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class ObjetoViewController {
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
-    ObjetoViewController objetoViewController;
+public class ObjetoViewController {
+    ObjetoController objetoController;
     Objeto objetoSeleccinado;
     ObservableList<Objeto> listaObjetos = FXCollections.observableArrayList();
 
     @FXML
-    private Button btnAccion1;
+    void initialize() {
+        objetoController =  new ObjetoController();
+        initTable();
+        initSearch();
+    }
 
-    @FXML
-    private Button btnAccion2;
+    private void initTable() {
+        initDataBinding();
+        obtenerObjetos();
+        tbObjeto.getItems().clear();
+        tbObjeto.setItems(listaObjetos);
+//        listenerSelection();
+    }
+    private void initSearch(){
+        FilteredList<Objeto> filteredData = new FilteredList<>(listaObjetos, b->true);
+        txtSearchC.textProperty().addListener((ObservableList,oldValue,newValue)->{
+            filteredData.setPredicate(objetoSeleccinado ->{
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String loweCaseFilter = newValue.toLowerCase();
+                if(objetoSeleccinado.getCodigoObjeto().toLowerCase().contains(loweCaseFilter)) {
+                    return true;
+                }else{
+                    return false;
+                }
+            });
+        });
+        SortedList<Objeto> sortedData = new SortedList<>(filteredData);
 
-    @FXML
-    private Button btnAccion3;
+        sortedData.comparatorProperty().bind(tbObjeto.comparatorProperty());
+        tbObjeto.setItems(sortedData);
+    }
 
-    @FXML
-    private Button btnAccion4;
-
-    @FXML
-    private TextField txtAccion1;
-
-    @FXML
-    private TextField txtAccion2;
-
-    @FXML
-    private TextField txtAccion3;
-
-    @FXML
-    private TextField txtAccion4;
-
-
-    @FXML
-    void onAccion1(ActionEvent event) {
-        ObjetosMasPrestados();
+    private void obtenerObjetos() {
+        listaObjetos.clear();
+        listaObjetos.addAll(objetoController.obtenerObjetos());
+    }
+    private void initDataBinding() {
+        colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombreObjeto()));
+        colCodigo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCodigoObjeto()));
     }
 
     @FXML
-    void onAccion2(ActionEvent event) {
-
+    void onObtenerObjetos(ActionEvent event) {
+        listaObjetos.clear();
+        listaObjetos.addAll(objetoController.obtenerObjetosRango(Integer.parseInt(txtRango.getText())));
     }
 
     @FXML
-    void onAccion3(ActionEvent event) {
-
-    }
+    private ResourceBundle resources;
 
     @FXML
-    void onAccion4(ActionEvent event) {
+    private URL location;
 
-    }
+    @FXML
+    private Button btnRango;
+
+    @FXML
+    private TableView<Objeto> tbObjeto;
+
+    @FXML
+    private TextField txtRango;
+
+    @FXML
+    private TableColumn<Objeto, String> colNombre;
+
+    @FXML
+    private TableColumn<Objeto, String> colCodigo;
+
+    @FXML
+    private TextField txtSearchC;
+
 
 }
+

@@ -4,6 +4,7 @@ import co.edu.uniquindio.parcial2.parcial2.model.*;
 import co.edu.uniquindio.parcial2.parcial2.builders.ClienteBuilder;
 
 import java.util.Date;
+import java.util.List;
 
 public class ModelFactory {
     private static ModelFactory modelFactory;
@@ -150,8 +151,12 @@ public class ModelFactory {
         prestamoUQ.getListaClientes().add(cliente5);
     }
 
+    public List<Objeto> obtenerObjetos(){
+        return prestamoUQ.getListaObjetos();
+    }
 
-
-
+    public List<Objeto> listaObjetos(int rango){
+        return prestamoUQ.objetosPrestadosMayor(rango);
+    }
 
 }

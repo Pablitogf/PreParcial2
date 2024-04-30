@@ -1,6 +1,7 @@
 package co.edu.uniquindio.parcial2.parcial2.model;
 
 import co.edu.uniquindio.parcial2.parcial2.builders.PrestamoUQBuilder;
+import co.edu.uniquindio.parcial2.parcial2.factory.ModelFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,5 +65,34 @@ public class PrestamoUQ {
                 ", listaObjeto=" + listaObjetos +
                 ", listaCliente=" + listaClientes    +
                 '}';
+    }
+
+    public  List<Objeto> objetosPrestadosMayor(int rango){
+        List<Objeto> listObjetoPrestadoRango = new ArrayList<>();
+
+        for (Objeto objeto:listaObjetos){
+            int contadoObjetoPrestado = 0;
+            for (Prestamo prestamo: listaPrestamo){
+                for (Objeto objetoPrestado:prestamo.getListaObjetos()){
+                    if (objeto.getNombreObjeto().equals(objetoPrestado.getNombreObjeto())){
+                        contadoObjetoPrestado++;
+                    }
+                }
+            }
+            if (contadoObjetoPrestado > rango){
+                listObjetoPrestadoRango.add(objeto);
+            }
+        }
+        return  listObjetoPrestadoRango;
+
+    }
+    ModelFactory modelFactory;
+
+    public void ObjetoController() {
+        modelFactory = ModelFactory.getInstancia();
+    }
+
+    public List<Objeto> obtenerObjetos() {
+        return modelFactory.obtenerObjetos();
     }
 }
