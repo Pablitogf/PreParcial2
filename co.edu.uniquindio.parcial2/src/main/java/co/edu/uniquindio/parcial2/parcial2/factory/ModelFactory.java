@@ -174,4 +174,12 @@ public class ModelFactory {
         return prestamoUQ.clientesPrestamos(rango);
     }
 
+    public List<Empleado> obtenerEmpleado(){
+        return prestamoUQ.getListaEmpleados();
+    }
+
+    public List<Empleado> listaEmpleados(int rango){
+        return prestamoUQ.empleadosPrestamos(rango);
+}
+
 }

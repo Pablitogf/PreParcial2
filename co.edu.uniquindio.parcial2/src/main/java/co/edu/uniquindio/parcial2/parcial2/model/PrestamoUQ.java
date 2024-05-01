@@ -113,4 +113,21 @@ public class PrestamoUQ {
         }
         return listaClientesPrestamos;
     }
+
+    public List<Empleado> empleadosPrestamos(int rango){
+        List<Empleado> listaEmpleadosPrestamo = new ArrayList<>();
+
+        for(Empleado empleado: listaEmpleados){
+            int contadorEmpleadosPrestamos = 0;
+            for (Prestamo prestamo: listaPrestamo){
+                if (empleado.equals(prestamo.getEmpleadoAsociado())){
+                    contadorEmpleadosPrestamos++;
+                }
+            }
+            if (contadorEmpleadosPrestamos > rango){
+                listaEmpleadosPrestamo.add(empleado);
+            }
+        }
+        return listaEmpleadosPrestamo;
+    }
 }
